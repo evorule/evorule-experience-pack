@@ -1,0 +1,44 @@
+[
+  {
+    "instruction_type": "finance_expense_limit_check",
+    "expect": "blocked / 差旅超3000",
+    "params": { "expense": { "type": "travel", "amount": 5000, "title": "京沪出差机票+住宿" } }
+  },
+  {
+    "instruction_type": "finance_expense_limit_check",
+    "expect": "allowed / 餐饮800在限额内",
+    "params": { "expense": { "type": "meal", "amount": 800, "title": "客户工作餐" } }
+  },
+  {
+    "instruction_type": "finance_approval_routing_check",
+    "expect": "director_approval / 分管副总（8000在5000-30000档）",
+    "params": { "expense": { "type": "equipment", "amount": 8000, "title": "测试仪器采购" } }
+  },
+  {
+    "instruction_type": "finance_expense_split_check",
+    "expect": "split_detected / 同供应商同日两笔各3000",
+    "params": {
+      "split_suspected": true,
+      "expenses": [
+        { "supplier": "供应商A", "date": "2026-01-05", "amount": 3000 },
+        { "supplier": "供应商A", "date": "2026-01-05", "amount": 3000 }
+      ]
+    }
+  },
+  {
+    "instruction_type": "finance_budget_check",
+    "expect": "blocked / 差旅费科目余额不足（已用8000+本次3000=11000>10000）",
+    "params": {
+      "budget": { "subject": "差旅费", "budget_limit": 10000, "budget_used": 8000, "within_budget": false, "remaining": -1000 },
+      "expense": { "amount": 3000 }
+    }
+  },
+  {
+    "instruction_type": "finance_storage_encryption_gate",
+    "expect": "blocked / 身份证号未加密存储",
+    "params": {
+      "operation": { "type": "db_write", "fields": { "id_card": "310101********1234" } },
+      "encryption": "none"
+    }
+  }
+]

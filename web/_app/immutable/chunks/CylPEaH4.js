@@ -1,0 +1,1 @@
+import{w as o}from"./Cq92TY1P.js";const a="evorule-console-cloud:demo-dataset",n="medical";function s(){const e=localStorage.getItem(a);return e==="medical"||e==="finance"||e==="agent"?e:n}const t=o(s());t.subscribe(e=>{localStorage.setItem(a,e)});function l(e){t.set(e)}function r(){t.update(e=>e==="agent"?"medical":e==="medical"?"finance":"agent")}export{t as d,l as s,r as t};

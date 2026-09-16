@@ -1,0 +1,14 @@
+{
+  "bundle_id": "bundle-djbh-crosscut-v1",
+  "dataset_id": "ds-djbh-crosscut",
+  "source_version": "v1",
+  "selection_mode": "auto_by_effective_date",
+  "effective_from": "2026-01-01",
+  "content_hash": "",
+  "entry_files": [
+    { "entry_id": "djbh.mfa", "file": "djbh_mfa.json" },
+    { "entry_id": "djbh.access_control", "file": "djbh_access.json" },
+    { "entry_id": "djbh.audit", "file": "djbh_audit.json" },
+    { "entry_id": "djbh.confidentiality", "file": "djbh_confidentiality.json" }
+  ]
+}

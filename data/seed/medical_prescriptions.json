@@ -1,0 +1,38 @@
+[
+  {
+    "instruction_type": "medical_antibiotic_tier_check",
+    "expect": "blocked / 特殊使用级抗菌药不得门诊",
+    "params": {
+      "prescription": { "antibiotic_tier": "special", "drug_name": "注射用盐酸万古霉素" },
+      "visit": { "type": "outpatient" },
+      "prescriber": { "title": "resident" }
+    }
+  },
+  {
+    "instruction_type": "medical_drug_indication_check",
+    "expect": "blocked / 病毒性感染无抗菌药指征",
+    "params": {
+      "diagnosis": { "type": "viral", "name": "急性上呼吸道感染" },
+      "lab": { "has_drug_sensitivity": false }
+    }
+  },
+  {
+    "instruction_type": "medical_drug_allergy_check",
+    "expect": "blocked / 青霉素过敏开阿莫西林",
+    "params": {
+      "patient": { "patient_id": "P-003", "has_penicillin_allergy": true },
+      "prescription": { "drug_name": "阿莫西林胶囊", "drug_class": "penicillin" }
+    }
+  },
+  {
+    "instruction_type": "medical_antibiotic_override_check",
+    "expect": "blocked / 越级使用36小时未补办手续",
+    "params": {
+      "prescription": {
+        "is_emergency_override": true,
+        "hours_since_prescription": 36,
+        "paperwork_filed": false
+      }
+    }
+  }
+]

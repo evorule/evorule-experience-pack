@@ -1,0 +1,53 @@
+[
+  {
+    "instruction_type": "finance_invoice_compliance_check",
+    "expect": "compliant / 字段齐全税号非空",
+    "params": {
+      "invoice": {
+        "invoice_no": "INV-20260101-001",
+        "buyer_name": "某科技有限公司",
+        "buyer_tax_id": "91110000MA01ABCD2E",
+        "amount": 12000,
+        "date": "2026-01-01"
+      }
+    }
+  },
+  {
+    "instruction_type": "finance_invoice_compliance_check",
+    "expect": "rejected / 缺纳税人识别号",
+    "params": {
+      "invoice": {
+        "invoice_no": "INV-20260102-002",
+        "buyer_name": "某贸易公司",
+        "amount": 800,
+        "date": "2026-01-02"
+      }
+    }
+  },
+  {
+    "instruction_type": "finance_invoice_compliance_check",
+    "expect": "rejected / 纳税人识别号为空",
+    "params": {
+      "invoice": {
+        "invoice_no": "INV-20260103-003",
+        "buyer_name": "某工作室",
+        "buyer_tax_id": "",
+        "amount": 300,
+        "date": "2026-01-03"
+      }
+    }
+  },
+  {
+    "instruction_type": "finance_invoice_compliance_check",
+    "expect": "compliant / 字段齐全",
+    "params": {
+      "invoice": {
+        "invoice_no": "INV-20260104-004",
+        "buyer_name": "某咨询中心",
+        "buyer_tax_id": "91110000MA09XY1234",
+        "amount": 560,
+        "date": "2026-01-04"
+      }
+    }
+  }
+]

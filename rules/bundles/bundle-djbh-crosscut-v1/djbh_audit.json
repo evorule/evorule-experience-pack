@@ -1,0 +1,37 @@
+[
+  {
+    "type": "branch",
+    "params": {
+      "domain": { "type": "instruction", "instruction_type": "djbh_audit_check" },
+      "on_true": [
+        { "type": "set", "params": { "attr": "data", "operation": "set", "value": "__exec__.instruction.params" } },
+        {
+          "type": "branch",
+          "params": {
+            "domain": { "type": "eq", "path": "__exec__.payload.data.audit_enabled", "value": false },
+            "on_true": [
+              { "type": "set", "params": { "attr": "__exec__.payload.data.result.decision", "operation": "set", "value": "blocked" } },
+              { "type": "set", "params": { "attr": "__exec__.payload.data.result.reason", "operation": "set", "value": "等保2.0三级 §8.1.4.3.a：安全审计未启用" } }
+            ],
+            "on_false": [
+              {
+                "type": "branch",
+                "params": {
+                  "domain": { "type": "eq", "path": "__exec__.payload.data.audit_log_protected", "value": false },
+                  "on_true": [
+                    { "type": "set", "params": { "attr": "__exec__.payload.data.result.decision", "operation": "set", "value": "warning" } },
+                    { "type": "set", "params": { "attr": "__exec__.payload.data.result.reason", "operation": "set", "value": "等保2.0三级 §8.1.4.3.c：审计记录未受保护" } }
+                  ],
+                  "on_false": [
+                    { "type": "set", "params": { "attr": "__exec__.payload.data.result.decision", "operation": "set", "value": "compliant" } }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "on_false": []
+    }
+  }
+]

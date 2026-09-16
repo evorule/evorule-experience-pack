@@ -1,0 +1,12 @@
+# 运行时产物（运行后生成，禁止进仓）
+data/*.db
+data/*.db-shm
+data/*.db-wal
+data/*.log
+data/jwt_secret.key
+data/wal/
+data/memory/
+
+# 系统
+Thumbs.db
+Desktop.ini

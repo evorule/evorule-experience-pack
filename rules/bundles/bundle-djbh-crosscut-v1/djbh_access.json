@@ -1,0 +1,31 @@
+[
+  {
+    "type": "branch",
+    "params": {
+      "domain": { "type": "instruction", "instruction_type": "djbh_access_control_check" },
+      "on_true": [
+        { "type": "set", "params": { "attr": "data", "operation": "set", "value": "__exec__.instruction.params" } },
+        {
+          "type": "branch",
+          "params": {
+            "domain": {
+              "type": "all",
+              "inner": [
+                { "type": "eq", "path": "__exec__.payload.data.requested_permission", "value": "admin" },
+                { "type": "not", "inner": { "type": "eq", "path": "__exec__.payload.data.user_role", "value": "admin" } }
+              ]
+            },
+            "on_true": [
+              { "type": "set", "params": { "attr": "__exec__.payload.data.result.decision", "operation": "set", "value": "blocked" } },
+              { "type": "set", "params": { "attr": "__exec__.payload.data.result.reason", "operation": "set", "value": "等保2.0三级 §8.1.4.2.d：最小权限原则，非管理员不得请求管理员权限" } }
+            ],
+            "on_false": [
+              { "type": "set", "params": { "attr": "__exec__.payload.data.result.decision", "operation": "set", "value": "allowed" } }
+            ]
+          }
+        }
+      ],
+      "on_false": []
+    }
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "path": "data.patients.P-001",
+    "value": {
+      "patient_id": "P-001",
+      "name_masked": "张某",
+      "age": 45,
+      "gender": "F",
+      "allergies": [],
+      "has_penicillin_allergy": false,
+      "note": "脱敏演示档案"
+    }
+  },
+  {
+    "path": "data.patients.P-002",
+    "value": {
+      "patient_id": "P-002",
+      "name_masked": "李某",
+      "age": 70,
+      "gender": "M",
+      "allergies": [],
+      "has_penicillin_allergy": false,
+      "note": "脱敏演示档案"
+    }
+  },
+  {
+    "path": "data.patients.P-003",
+    "value": {
+      "patient_id": "P-003",
+      "name_masked": "王某",
+      "age": 38,
+      "gender": "F",
+      "allergies": ["penicillin"],
+      "has_penicillin_allergy": true,
+      "note": "脱敏演示档案；青霉素过敏史"
+    }
+  },
+  {
+    "path": "data.patients.P-004",
+    "value": {
+      "patient_id": "P-004",
+      "name_masked": "赵某",
+      "age": 62,
+      "gender": "M",
+      "allergies": [],
+      "has_penicillin_allergy": false,
+      "note": "脱敏演示档案"
+    }
+  },
+  {
+    "path": "data.patients.P-005",
+    "value": {
+      "patient_id": "P-005",
+      "name_masked": "陈某",
+      "age": 29,
+      "gender": "F",
+      "allergies": [],
+      "has_penicillin_allergy": false,
+      "note": "脱敏演示档案"
+    }
+  },
+  {
+    "path": "data.patients.P-006",
+    "value": {
+      "patient_id": "P-006",
+      "name_masked": "刘某",
+      "age": 81,
+      "gender": "M",
+      "allergies": [],
+      "has_penicillin_allergy": false,
+      "note": "脱敏演示档案"
+    }
+  }
+]
